@@ -17,12 +17,15 @@
         title = ""
 
     sum_allowed_qualities = quality & 0xFFFF
-    sum_preferred_qualities = quality >> 16
+    sum_preferred_qualities = quality >> 17
     set_hdtv = {Quality.HDTV, Quality.RAWHDTV, Quality.FULLHDTV}
     set_webdl = {Quality.HDWEBDL, Quality.FULLHDWEBDL, Quality.UHD_4K_WEBDL, Quality.UHD_8K_WEBDL}
     set_bluray = {Quality.HDBLURAY, Quality.FULLHDBLURAY, Quality.UHD_4K_BLURAY, Quality.UHD_8K_BLURAY}
+    set_HEVC = {Quality.HDTV, Quality.RAWHDTV, Quality.FULLHDTV, Quality.HDWEBDL, Quality.FULLHDWEBDL, Quality.UHD_4K_WEBDL, Quality.UHD_8K_WEBDL, Quality.HDBLURAY, Quality.FULLHDBLURAY, Quality.UHD_4K_BLURAY, Quality.UHD_8K_BLURAY, Quality.HEVC}
     set_1080p = {Quality.FULLHDTV, Quality.FULLHDWEBDL, Quality.FULLHDBLURAY}
     set_720p = {Quality.HDTV, Quality.RAWHDTV, Quality.HDWEBDL, Quality.HDBLURAY}
+    set_HEVC_1080p = {Quality.FULLHDTV, Quality.FULLHDWEBDL, Quality.FULLHDBLURAY, Quality.HEVC}
+    set_HEVC_720p = {Quality.HDTV, Quality.RAWHDTV, Quality.HDWEBDL, Quality.HDBLURAY, Quality.HEVC}
     set_uhd_4k = {Quality.UHD_4K_TV, Quality.UHD_4K_BLURAY, Quality.UHD_4K_WEBDL}
     set_uhd_8k = {Quality.UHD_8K_TV, Quality.UHD_8K_BLURAY, Quality.UHD_8K_WEBDL}
 
@@ -59,6 +62,10 @@
     elif set(allowed_qualities).issubset(set_720p)and set(preferred_qualities).issubset(set_720p):
         cssClass = Quality.cssClassStrings[Quality.HDBLURAY]
         qualityString = '720p'
+    # Check if all resolutions are HEVC
+    elif set(allowed_qualities).issubset(set_HEVC)and set(preferred_qualities).issubset(set_HEVC):
+        cssClass = Quality.cssClassStrings[Quality.HEVC]
+        qualityString = 'HEVC'
     # Check if all resolutions are 4K UHD
     elif set(allowed_qualities).issubset(set_uhd_4k)and set(preferred_qualities).issubset(set_uhd_4k):
         cssClass = Quality.cssClassStrings[Quality.HDBLURAY]
