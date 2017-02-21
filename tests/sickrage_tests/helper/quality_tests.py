@@ -30,7 +30,7 @@ import unittest
 sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../lib')))
 sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
-from sickbeard.common import ANY, HD, HD1080p, HD720p, Quality, SD
+from sickbeard.common import ANY, HD, HD1080p, HD720p, Quality, SD, HEVC, HEVC720p, HEVC1080p
 from sickrage.helper.quality import get_quality_string
 
 
@@ -45,6 +45,9 @@ class QualityTests(unittest.TestCase):
         tests = {
             ANY: 'Any',
             HD: 'HD',
+            Quality.HEVC: 'HEVC',
+            HEVC720p: 'HEVC 720p',
+            HEVC1080p: 'HEVC 1080p',           
             HD720p: 'HD720p',
             HD1080p: 'HD1080p',
             Quality.FULLHDBLURAY: '1080p BluRay',
